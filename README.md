@@ -47,7 +47,7 @@ The data for this project is available on Amazon S3.
 
 - `data_quality.py`
 
-  Contains DataQualityOperator, which runs a data quality check by passing an SQL query and expected result as arguments, failing if the results don't match.
+  Contains DataQualityOperator, which runs a data quality check by passing an SQL query and expected result as arguments, will fail if the results don't match.
 
 # **Pipeline**
 ![ERD](images/dag.png)
