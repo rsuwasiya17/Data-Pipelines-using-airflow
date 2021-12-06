@@ -96,6 +96,13 @@ load_time_dimension_table = LoadDimensionOperator(
 run_quality_checks = DataQualityOperator(
     task_id='Run_data_quality_checks',
     dag=dag,
+    dq_test = [
+    	{'test_sql': "SELECT COUNT(*) FROM users WHERE userid is null", 'expected_result':0},
+    	{'test_sql': "SELECT COUNT(*) FROM songs WHERE song_id is null", 'expected_result':0},
+    	{'test_sql': "SELECT COUNT(*) FROM artists WHERE artist_id is null", 'expected_result':0},
+    	{'test_sql': "SELECT COUNT(*) FROM time WHERE start_time is null", 'expected_result':0},
+    	{'test_sql': "SELECT COUNT(*) FROM songplays WHERE userid is null", 'expected_result':0}    	
+    ],
     tables=['songplays', 'users', 'songs', 'artists', 'time'],
     redshift_conn_id="redshift"
 )
